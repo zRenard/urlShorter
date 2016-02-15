@@ -1,0 +1,8 @@
+.mdl-card__title {
+    color: #FFFFFF;
+    background-color: rgb(87, 99, 203);
+}
+.error {
+    color: #FFFFFF;
+    background-color: rgb(203, 87, 87);
+}

@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^/main$ main.php [L]
+RewriteRule ^/view(.*)$ view.php$1 [L]
+RewriteRule ^/create(.*)$ create.php$1 [L]
+RewriteRule ^/?([A-Za-z0-9]+)$ view.php?c=$1&r=0 [L]
