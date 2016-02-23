@@ -1,5 +1,4 @@
-<?
-ini_set(mysql.connect_timeout,5);
+<?php
 date_default_timezone_set('Europe/Paris');
 /* Primary */
 $db_ip = "localhost";

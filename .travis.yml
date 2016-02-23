@@ -1,14 +1,17 @@
 language: php
 php:
-  - '5.4'
   - '5.5'
   - '5.6'
-  - '7.0'
-  - hhvm
-  - nightly
 
 script:
-  phpunit src/main.php
+    phpunit src/main.php
 
 notifications:
   slack: zrenard:K6biFPPNk6QVKm7nLuJoA1s1
+
+addons :
+    sauce_connect:
+        username:
+            secure: "H1qFhn6s07U8qQ8i8Vl6OkF3y00mkJHVFHdaTfcoybzcZygDQ/NAWyshj+v5BGrkCn1SF2ZwwiyEzccLh34cDDCt1qymbWAdp2iSJS5crTB3y/30dipOyeWTZlvyfJ43KuTPSZzycsijRIXSmflhWE9m8wwYM6VkKUl4WUCow9yiXnPypyhlfM070fi1NLGjjX7r5w2qFfsV87eaLtTkt+ZDCo/q2D8dYwAaUSGNzaZL2698aYp+JbN1poHk+Uhn4NYKlifPMTubdYC6zq0Y+JJjNCyEE/vEf0yBHKgRwDMFeW9XT5lrCXxwm2shwfaYxFRPyOIoK6Ossoj8i2o/pkfnSkEbzpTvLIYaF1JQ4GgzK6/DfcPfwQQiaMFy1MWWaSofMv7ad1H3iuwHTZKL/26h/w4+5CtlJeO+ur0jYLVUFm6kHbfbfF/nahYW/uUOgOr7TqJf9tgI5Xu/qYmvq6dHWi62SZLICNI5v7UrfYTPeHSlKprH7bRJz0UuMjNRHSRf5K0Wd5HOFk1I11yuOASy1o5UJ/v5G0uVCifIv0MDXEEgdjxoFsGZxG5JdZV98vHRqnUpBQ5yxdHs3OYQtq4C0EfgOukz1a9T2yDLX4eRtX9HFD8GDCvlEe/2uGTj5MrDL+XgYqGZR62pb0fmLT6FB5ZqBSQgMJZD0VdXG6c="
+        access_key:
+            secure: "Vc8nlrBZQi82N1GIgNED6/BiTbaAGIPHX3dDAztYYgcnwtay1HQ3ifqzworbhkIXAloAAz4TgghfPkd5oNI1e+xjCCnTZWcFfiaEtlznTsrard/0NU3ve6iQjzrYP4ncChaP92pLgqjnBmKTxNrDju/vlR3aRyc17w5MKjk6jE/Pt2IPBx9J7tca36upx7/2iVhHLWYCJ1cGESVzktP0YzvhG/zDEgI7OvPVz15aY54+ctqjz738JJAp+jMW6O8aeRTNeOQ0SKcOIDQFUdlCxnGehCKysbaDn3aotgdAmgedZ5GyxEJUK11+CU8RLWn91Eq6EkX+4BWvY7qroIeA0ugYqgQuO8qxRpanroH+KVbF0P9+yb+WDGEhLVS4Iw5a/gdJAep4rrG4NdU4bC2g/Eb62Btg9Ufh+ceHtpNOFSbsSVpHTYRmDoJX7lnRY1v64ZAHhOQkvMGrJx9SKj9rPRIfhfCxkTNYyUc8d7pMBKx7mm3YtUy5nATFrPe1Qs37TJdQe1GWSli3MNVKkEOfpf7g6K8yelUq1BUeZLP0iMQDKilIJqy4Sufu0tj8JoWAr+SB7pBIRQv9BHLFFqUGQKIrJcVaXzWFxDYRD1KOXcpb++15B9zSRvn4ihddW/mR7SNDbmwolrOcuxg0nrUNt4JjD4Xs7VlMD7t12LtPQpg="

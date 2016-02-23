@@ -57,10 +57,10 @@
                                         <span for="changeSname" class="mdl-tooltip">By default, short url will generate randomly</span>
                                     </label>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="sname">
-                                        <input class="mdl-textfield__input" type="text" id="sname" name="sn" ng-disabled="!sname" required min="3" pattern="[A-Z,a-z,0-9]{5,20}">
-                                        <label class="mdl-textfield__label" for="sname">Short name</label>
-                                        <span class="mdl-textfield__error" for="range">Input is not a valid name (alphanumeric characters only, between 5 and 20 characters)</span>
-                                        <span for="range" class="mdl-tooltip">Alphanumeric name only, between 5 and 20 characters</span>
+                                        <input class="mdl-textfield__input" type="text" id="sn" name="sn" ng-disabled="!sname" required min="3" pattern="[A-Z,a-z,0-9]{5,20}">
+                                        <label class="mdl-textfield__label" for="sn">Short name</label>
+                                        <span class="mdl-textfield__error" for="sn">Input is not a valid name (alphanumeric characters only, between 5 and 20 characters)</span>
+                                        <span for="sn" class="mdl-tooltip">Alphanumeric name only, between 5 and 20 characters</span>
                                     </div>
                                     <!-- <input class="mdl-slider mdl-js-slider" ng-model="validity" type="range" min="0" max="120" step="1" id="srange" name="srange">-->
                                 </div>
@@ -106,7 +106,7 @@
             </div>
         </main>
         <footer class="mdl-mini-footer">
-          <?
+          <?php
           $nb=$nb_perma=$nb_current=0;
           include("config.php");
           // Create connection
@@ -134,8 +134,6 @@
               }
             }
           }
-
-
           ?>
           <div class="mdl-mini-footer__left-section">
             <span class="mdl-badge" data-badge="<?=$nb?>">created</span>

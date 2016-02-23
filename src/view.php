@@ -17,10 +17,6 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
       exit;
     }
 
-    //$sql = "DELETE FROM `zrdli_list` WHERE validity IS NOT NULL AND validity < now()";
-    //$result = $conn->query($sql);
-
-    // SELECT FROM_BASE64(url) as url FROM list WHERE code = '3fcb06bc' AND (validity is NULL OR (NOW() BETWEEN creation AND validity))
     $sql = "SELECT url,validity,hits FROM list WHERE code = '".$code."' AND (validity is NULL OR (NOW() BETWEEN creation AND validity))";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -156,7 +152,7 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
   </div>
 </body>
 
-</html><?
+</html><?php
     }
 } else {
   header('Location: main?e=4');
