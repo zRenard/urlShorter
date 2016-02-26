@@ -23,7 +23,7 @@
             <div class="page-content">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--6-col">
-                        <form action="create" method="POST">
+                        <form action="create.php" method="POST">
                             <div class="mdl-card mdl-shadow--4dp mdl-card--border">
                                 <?php
                                     if (isset($_GET["e"]) && ($_GET["e"]=="1" || $_GET["e"]=="2" || $_GET["e"]=="8" || $_GET["e"]=="9")) {
@@ -75,7 +75,7 @@
                         </form>
                     </div>
                     <div class="mdl-cell mdl-cell--6-col">
-                        <form action="view" method="POST">
+                        <form action="view.php" method="POST">
                             <div class="mdl-card mdl-shadow--4dp">
                                 <?php
                                     if (isset($_GET["e"]) && ($_GET["e"]=="3")) {

@@ -2,7 +2,7 @@
 if (isset($_GET["c"])||isset($_POST["c"])) {
     $code = htmlspecialchars(isset($_GET["c"]) ? $_GET["c"] : $_POST["c"]);
     if ($code=='') {
-        header('Location: main?e=3');
+        header('Location: main.php?e=3');
         exit;
     }
     $redirect = 1;
@@ -13,7 +13,7 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
 
     // Check connection
     if ($conn->connect_error) {
-      header('Location: main?e=5');
+      header('Location: main.php?e=5');
       exit;
     }
 
@@ -87,7 +87,7 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
                 <tr>
                   <td class="mdl-data-table__cell--non-numeric">Validity</td>
                   <td class="mdl-data-table__cell--non-numeric">
-                    <?
+                    <?php
                     if ($row['validity']==NULL) {
                       echo "Never expire";
                     } else {
@@ -155,6 +155,6 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
 </html><?php
     }
 } else {
-  header('Location: main?e=4');
+  header('Location: main.php?e=4');
   exit;
 } ?>
