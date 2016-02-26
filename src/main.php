@@ -25,15 +25,17 @@
                     <div class="mdl-cell mdl-cell--6-col">
                         <form action="create" method="POST">
                             <div class="mdl-card mdl-shadow--4dp mdl-card--border">
-                                <? if (isset($_GET["e"]) && ($_GET["e"]=="1" || $_GET["e"]=="2" || $_GET["e"]=="8" || $_GET["e"]=="9")) { ?>
-                                <div class="mdl-card__title error"><i class="fa fa-cog"></i>&nbsp;&nbsp;Create
-                                <? if ($_GET["e"]=="1") echo " - <br/><small>Incorrect validity value</small>"; ?>
-                                <? if ($_GET["e"]=="2") echo " - <br/><small>Incorrect url</small>"; ?>
-                                <? if ($_GET["e"]=="8"||$_GET["e"]=="9") echo " - <br/><small>Invalid short name</small>"; ?>
-                                </div>
-                                <? } else { ?>
-                                <div class="mdl-card__title"><i class="fa fa-cog"></i>&nbsp;&nbsp;Create </div>
-                                <? } ?>
+                                <?php
+                                    if (isset($_GET["e"]) && ($_GET["e"]=="1" || $_GET["e"]=="2" || $_GET["e"]=="8" || $_GET["e"]=="9")) {
+                                        echo '<div class="mdl-card__title error"><i class="fa fa-cog"></i>&nbsp;&nbsp;Create';
+                                        if ($_GET["e"]=="1") echo " - <br/><small>Incorrect validity value</small>";
+                                        if ($_GET["e"]=="2") echo " - <br/><small>Incorrect url</small>";
+                                        if ($_GET["e"]=="8"||$_GET["e"]=="9") echo " - <br/><small>Invalid short name</small>";
+                                        echo '</div>';
+                                    } else {
+                                        echo '<div class="mdl-card__title"><i class="fa fa-cog"></i>&nbsp;&nbsp;Create </div>';
+                                    }
+                                ?>
                                 <div class="mdl-card__supporting-text">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" type="url" id="url" name="url" required title="Only valid url" value="http://" pattern="http[s]*://[A-Za-z0-9./?&#-_=]+">
@@ -75,13 +77,15 @@
                     <div class="mdl-cell mdl-cell--6-col">
                         <form action="view" method="POST">
                             <div class="mdl-card mdl-shadow--4dp">
-                                <? if (isset($_GET["e"]) && ($_GET["e"]=="3")) { ?>
-                                <div class="mdl-card__title error"><i class="fa fa-search"></i>&nbsp;&nbsp; Decode
-                                <? if ($_GET["e"]=="3") echo " - <br/><small>Incorrect ID</small>"; ?>
-                                </div>
-                                <? } else { ?>
-                                <div class="mdl-card__title"><i class="fa fa-search"></i>&nbsp;&nbsp; Decode </div>
-                                <? } ?>
+                                <?php
+                                    if (isset($_GET["e"]) && ($_GET["e"]=="3")) {
+                                        echo '<div class="mdl-card__title error"><i class="fa fa-search"></i>&nbsp;&nbsp; Decode';
+                                        if ($_GET["e"]=="3") echo " - <br/><small>Incorrect ID</small>";
+                                        echo '</div>';
+                                    } else {
+                                        echo '<div class="mdl-card__title"><i class="fa fa-search"></i>&nbsp;&nbsp; Decode </div>';
+                                    }
+                                ?>
                                 <div class="mdl-card__supporting-text">
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" type="text" id="id" name="c" required title="Only alphanumeric value" pattern="[a-zA-Z0-9]+">
