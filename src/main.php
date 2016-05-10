@@ -59,10 +59,21 @@
                                         <span for="changeSname" class="mdl-tooltip">By default, short url will generate randomly</span>
                                     </label>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="sname">
-                                        <input class="mdl-textfield__input" type="text" id="sn" name="sn" ng-disabled="!sname" required min="3" pattern="[A-Z,a-z,0-9]{5,20}">
+                                        <input class="mdl-textfield__input" type="text" id="sn" name="sn" ng-disabled="!sname" required min="5" pattern="[A-Z,a-z,0-9]{5,20}">
                                         <label class="mdl-textfield__label" for="sn">Short name</label>
                                         <span class="mdl-textfield__error" for="sn">Input is not a valid name (alphanumeric characters only, between 5 and 20 characters)</span>
                                         <span for="sn" class="mdl-tooltip">Alphanumeric name only, between 5 and 20 characters</span>
+                                    </div>
+                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                                        <input type="checkbox" id="pwd" name="pwd" class="mdl-switch__input" ng-model="pwd">
+                                        <span id="addPwd" class="mdl-switch__label">Add password</span>
+                                        <span for="addPwd" class="mdl-tooltip">By default, short url are not password protected, you can add one for private url.</span>
+                                    </label>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="pwd">
+                                        <input class="mdl-textfield__input" type="password" id="pw" name="pw" ng-disabled="!pwd" required min="8" max="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}">
+                                        <label class="mdl-textfield__label" for="pw">Password</label>
+                                        <span class="mdl-textfield__error" for="pw">Input is not a valid password (between 8 and 50 characters with at least one number, one uppercase and one lowercase letter)</span>
+                                        <span for="pw" class="mdl-tooltip">Any characters between 8 and 50 characters with at least one number, one uppercase and one lowercase letter</span>
                                     </div>
                                     <!-- <input class="mdl-slider mdl-js-slider" ng-model="validity" type="range" min="0" max="120" step="1" id="srange" name="srange">-->
                                 </div>
