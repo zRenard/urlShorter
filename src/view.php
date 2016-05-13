@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_GET["c"])||isset($_POST["c"])) {
     $code = htmlspecialchars(isset($_GET["c"]) ? $_GET["c"] : $_POST["c"]);
     if ($code=='') {
@@ -9,6 +10,14 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
     if (isset($_GET["r"])||isset($_POST["r"]))
       $redirect = htmlspecialchars(isset($_GET["r"]) ? $_GET["r"] : $_POST["r"]);
 
+    if (isset($_POST["p"]))
+      $password=md5($_POST["p"].$code);
+    
+    if (isset($_SESSION['p'])) {
+      $password=$_SESSION['p'];
+      unset($_SESSION['p']);
+    }
+
     include("config.php");
 
     // Check connection
@@ -17,10 +26,15 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
       exit;
     }
 
-    $sql = "SELECT url,validity,hits FROM list WHERE code = '".$code."' AND (validity is NULL OR (NOW() BETWEEN creation AND validity))";
+    $sql = "SELECT url,validity,hits,password FROM list WHERE code = '".$code."' AND (validity is NULL OR (NOW() BETWEEN creation AND validity))";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
+          if ($row["password"]!="" && $row["password"]!=$password) {
+            header('Location: main.php?e=403');
+            exit;
+          }
+          
           $sql_hits = "UPDATE list SET hits = hits+1 WHERE code = '".$code."'";
           $result_hits = $conn->query($sql_hits);
 
@@ -82,6 +96,17 @@ if (isset($_GET["c"])||isset($_POST["c"])) {
                   <td class="mdl-data-table__cell--non-numeric">Long Url</td>
                   <td class="mdl-data-table__cell--non-numeric">
                     <textarea rows="4" disabled readonly><?=urldecode(base64_decode($row['url']))?></textarea>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="mdl-data-table__cell--non-numeric">Password</td>
+                  <td class="mdl-data-table__cell--non-numeric">
+                    <?php
+                      if ($row["password"]!="")
+                        echo "Activated";
+                      else
+                        echo "No";
+                    ?>
                   </td>
                 </tr>
                 <tr>

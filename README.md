@@ -7,3 +7,4 @@ Url shorter with QRCode and statistics
 - qrCode for mobile
 - statistics per url
 - automatic/non automatic redirect
+- password protected url

@@ -1,4 +1,5 @@
 <!doctype html>
+<?php session_start();?>
 <html ng-app="shorterApp" lang="en">
 
 <head>
@@ -89,9 +90,10 @@
                         <form action="view.php" method="POST">
                             <div class="mdl-card mdl-shadow--4dp">
                                 <?php
-                                    if (isset($_GET["e"]) && ($_GET["e"]=="3")) {
+                                    if (isset($_GET["e"]) && ($_GET["e"]=="3" || $_GET["e"]=="403")) {
                                         echo '<div class="mdl-card__title error"><i class="fa fa-search"></i>&nbsp;&nbsp; Decode';
                                         if ($_GET["e"]=="3") echo " - <br/><small>Incorrect ID</small>";
+                                        if ($_GET["e"]=="403") echo " - <br/><small>Incorrect Password</small>";
                                         echo '</div>';
                                     } else {
                                         echo '<div class="mdl-card__title"><i class="fa fa-search"></i>&nbsp;&nbsp; Decode </div>';
@@ -108,6 +110,17 @@
                                         <span id="redirect" class="mdl-switch__label">Automatic redirection</span>
                                         <span for="redirect" class="mdl-tooltip">By default you will be redirected to the long encoded url to the ID above</span>
                                     </label>
+                                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                                        <input type="checkbox" id="epwd" name="epwd" class="mdl-switch__input" ng-model="epwd">
+                                        <span id="enterPwd" class="mdl-switch__label">Enter password</span>
+                                        <span for="enterPwd" class="mdl-tooltip">By default, short url are not password protected, you can enter one to access private url.</span>
+                                    </label>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-show="epwd">
+                                        <input class="mdl-textfield__input" type="password" id="p" name="p" ng-disabled="!epwd" required min="8" max="50" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}">
+                                        <label class="mdl-textfield__label" for="pw">Password</label>
+                                        <span class="mdl-textfield__error" for="pw">Input is not a valid password (between 8 and 50 characters with at least one number, one uppercase and one lowercase letter)</span>
+                                        <span for="p" class="mdl-tooltip">Any characters between 8 and 50 characters with at least one number, one uppercase and one lowercase letter</span>
+                                    </div>
                                 </div>
                                 <div class="mdl-card__actions">
                                     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">

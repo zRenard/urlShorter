@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (  (isset($_POST["url"]) && $_POST["url"]!="") ||
       (isset($_GET["url"]) && $_GET["url"]!="") ) {
     $url = strip_tags(isset($_GET["url"]) ? $_GET["url"] : $_POST["url"]);
@@ -49,12 +50,22 @@ if (  (isset($_POST["url"]) && $_POST["url"]!="") ||
                 exit;
             }
         }
-        if ($validity == 0) {
-            $sql = "INSERT INTO list (url,code) VALUES ('".base64_encode(urlencode($url))."', '".$code."')";
+        
+        if(isset($_POST["pw"])) {
+            $pw = strip_tags($_POST["pw"]);
+            $password = md5($pw.$code);
         } else {
-            $sql = "INSERT INTO list (url,code,creation,validity) VALUES ('".base64_encode(urlencode($url))."', '".$code."',NOW(),DATE_ADD(NOW(),INTERVAL '".$validity."' MINUTE))";
+            $password = "";
+        }
+        
+        
+        if ($validity == 0) {
+            $sql = "INSERT INTO list (url,code,password) VALUES ('".base64_encode(urlencode($url))."', '".$code."', '".$password."')";
+        } else {
+            $sql = "INSERT INTO list (url,code,password,creation,validity) VALUES ('".base64_encode(urlencode($url))."', '".$code."', '".$password."',NOW(),DATE_ADD(NOW(),INTERVAL '".$validity."' MINUTE))";
         }
         if ($conn->query($sql) === TRUE) {
+            $_SESSION['p'] = $password;
             header('Location: view.php?c='.$code);
         } else {
           header('Location: main.php?e=6');

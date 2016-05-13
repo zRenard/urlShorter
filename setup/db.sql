@@ -5,6 +5,7 @@ CREATE TABLE `list` (
   `url` text NOT NULL,
   `creation` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `validity` timestamp NULL DEFAULT NULL,
+  `password` text NULL DEFAULT NULL,
   `hits` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COMMENT='Shorter URL list';
